@@ -1,0 +1,2 @@
+# Runner
+Runner is a macOS application that provides services for executing selected text as fragments of code. It takes its inspiration from the Smalltalk user interface, which always allowed “do it,” “print it,” and “inspect it” operations on selected text, assuming that said text was written in Smalltalk. Runner seeks to the same for any selected text in macOS, again assuming that the selected text is written in a supported programming language.
