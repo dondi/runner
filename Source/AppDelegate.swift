@@ -4,6 +4,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet var console: NSTextView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSApp.servicesProvider = self
@@ -30,10 +31,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         process.launch()
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        if let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-            print("Runner output:\n\(output)")
-        } else {
-            print("Runner: No output")
+        var result = "(executed, but no output)"
+        if let output = String(data: data, encoding: String.Encoding.utf8) {
+            result = output
         }
+
+        console.string = "\(console.string)\n-----\n\nCode:\n\n\(str)\n\n-----\n\n\(result)"
     }
 }
