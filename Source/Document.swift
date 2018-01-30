@@ -8,7 +8,7 @@ class Document: NSDocument {
     }
 
     override class var autosavesInPlace: Bool {
-        return true
+        return false
     }
 
     override var windowNibName: NSNib.Name? {
