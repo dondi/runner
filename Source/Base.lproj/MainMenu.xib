@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -12,13 +10,8 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Runner" customModuleProvider="target">
-            <connections>
-                <outlet property="console" destination="ZZh-pM-vLQ" id="hqV-Jz-e55"/>
-                <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
-            </connections>
-        </customObject>
+        <customObject id="-3" userLabel="Application" customClass="NSApplication"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -123,7 +116,7 @@
                             </menuItem>
                             <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
                                 <connections>
-                                    <action selector="print:" target="-1" id="qaZ-4w-aoO"/>
+                                    <action selector="printDocument:" target="-1" id="qaZ-4w-aoO"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -681,47 +674,5 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Runner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1778"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBt-bG-Ea7">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="F3B-yX-RJe">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" smartInsertDelete="YES" id="ZZh-pM-vLQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <size key="minSize" width="480" height="360"/>
-                                    <size key="maxSize" width="480" height="10000000"/>
-                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="gmv-Q4-71b">
-                            <rect key="frame" x="464" y="0.0" width="16" height="360"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="sBt-bG-Ea7" secondAttribute="trailing" id="8Ic-6H-94T"/>
-                    <constraint firstItem="sBt-bG-Ea7" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="BIw-Ht-H4b"/>
-                    <constraint firstAttribute="bottom" secondItem="sBt-bG-Ea7" secondAttribute="bottom" id="Tp4-Xw-kuJ"/>
-                    <constraint firstItem="sBt-bG-Ea7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="rQs-Xz-8bI"/>
-                </constraints>
-            </view>
-            <connections>
-                <outlet property="delegate" destination="Voe-Tx-rLC" id="u6T-pN-zBT"/>
-            </connections>
-        </window>
     </objects>
 </document>
