@@ -2,6 +2,9 @@ import Cocoa
 
 class Document: NSDocument {
 
+    @IBOutlet var codeTextView: NSTextView!
+    @IBOutlet var outputTextView: NSTextView!
+
     override init() {
         super.init()
         // Add your subclass-specific initialization here.
@@ -30,6 +33,25 @@ class Document: NSDocument {
         throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
     }
 
+    @IBAction func runThis(_ sender: Any) {
+        let code = codeTextView.string
 
+        // Thank you https://iswift.org/cookbook/execute-a-shell-command
+        let process = Process()
+        process.launchPath = "/usr/bin/python"
+        process.arguments = ["-c", code]
+
+        let pipe = Pipe()
+        process.standardOutput = pipe
+
+        process.launch()
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        var result = "(executed, but no output)"
+        if let output = String(data: data, encoding: String.Encoding.utf8) {
+            result = output
+        }
+
+        outputTextView.string = result
+    }
 }
-

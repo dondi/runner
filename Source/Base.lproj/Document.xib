@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="Runner" customModuleProvider="target">
             <connections>
+                <outlet property="codeTextView" destination="O8e-OW-mdG" id="DEe-hO-aL0"/>
+                <outlet property="outputTextView" destination="EU0-BQ-QWM" id="0ul-1L-gnO"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -58,6 +60,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="runThis:" target="-2" id="XsV-mK-z2j"/>
+                                        </connections>
                                     </button>
                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9g-wj-Vf6">
                                         <rect key="frame" x="18" y="11" width="145" height="26"/>
