@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="Runner" customModuleProvider="target">
             <connections>
                 <outlet property="codeTextView" destination="O8e-OW-mdG" id="DEe-hO-aL0"/>
+                <outlet property="languagePopupButton" destination="x9g-wj-Vf6" id="wCO-m5-WiO"/>
                 <outlet property="outputTextView" destination="EU0-BQ-QWM" id="0ul-1L-gnO"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
@@ -55,7 +56,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gQ-uG-elo">
-                                        <rect key="frame" x="180" y="11" width="67" height="25"/>
+                                        <rect key="frame" x="136" y="11" width="67" height="25"/>
                                         <buttonCell key="cell" type="roundTextured" title="Run This" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2rA-gH-rGX">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -65,15 +66,18 @@
                                         </connections>
                                     </button>
                                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9g-wj-Vf6">
-                                        <rect key="frame" x="18" y="11" width="145" height="26"/>
-                                        <popUpButtonCell key="cell" type="push" title="JavaScript (node)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Mc6-2c-XP2" id="XeW-zW-A1d">
+                                        <rect key="frame" x="18" y="11" width="101" height="26"/>
+                                        <popUpButtonCell key="cell" type="push" title="JavaScript" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Mc6-2c-XP2" id="XeW-zW-A1d">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="klD-0c-iVS">
                                                 <items>
-                                                    <menuItem title="JavaScript (node)" state="on" id="Mc6-2c-XP2"/>
+                                                    <menuItem title="JavaScript" state="on" id="Mc6-2c-XP2"/>
                                                     <menuItem title="Python" id="BJg-YR-0ox"/>
                                                     <menuItem title="Ruby" id="KOm-oh-ovc"/>
+                                                    <menuItem title="Swift" id="aBJ-8v-eWU">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>

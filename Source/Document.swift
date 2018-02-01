@@ -2,8 +2,9 @@ import Cocoa
 
 class Document: NSDocument {
 
-    @IBOutlet var codeTextView: NSTextView!
-    @IBOutlet var outputTextView: NSTextView!
+    @IBOutlet weak var codeTextView: NSTextView!
+    @IBOutlet weak var languagePopupButton: NSPopUpButton!
+    @IBOutlet weak var outputTextView: NSTextView!
 
     override init() {
         super.init()
@@ -44,12 +45,22 @@ class Document: NSDocument {
         let pipe = Pipe()
         process.standardOutput = pipe
 
+        let errorPipe = Pipe()
+        process.standardError = errorPipe
+
         process.launch()
 
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let errorData = errorPipe.fileHandleForReading.readDataToEndOfFile()
+
         var result = "(executed, but no output)"
         if let output = String(data: data, encoding: String.Encoding.utf8) {
             result = output
+        }
+
+        if let errorOutput = String(data: errorData, encoding: String.Encoding.utf8),
+           errorOutput.count > 0 {
+            result = "\(result)\n\nErrors reported:\n\(errorOutput)"
         }
 
         outputTextView.string = result
