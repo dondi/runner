@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7736186216035FC00467622 /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7736172216035BB00467622 /* Siesta.framework */; };
+		F773618D2160368B00467622 /* Siesta.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7736172216035BB00467622 /* Siesta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F773618F2160384700467622 /* LanguageIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F773618E2160384700467622 /* LanguageIDService.swift */; };
+		F77361912160391E00467622 /* KeysAndTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77361902160391E00467622 /* KeysAndTokens.swift */; };
+		F7736194216064E600467622 /* LanguageID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7736193216064E600467622 /* LanguageID.swift */; };
 		F7782169215E875900B240C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7782168215E875900B240C3 /* AppDelegate.swift */; };
 		F778216B215E875900B240C3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F778216A215E875900B240C3 /* Document.swift */; };
 		F778216E215E875900B240C3 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = F778216C215E875900B240C3 /* Document.xib */; };
@@ -17,6 +22,83 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F773616F216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA336E4F1B2E6DDB006F702A;
+			remoteInfo = "Siesta iOS";
+		};
+		F7736171216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9F2FB51E1C28645E0068DFFA;
+			remoteInfo = "Siesta macOS";
+		};
+		F7736173216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDCCAF651E6A313800860D18;
+			remoteInfo = "Siesta watchOS";
+		};
+		F7736175216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDCCAF721E6A31D900860D18;
+			remoteInfo = "Siesta tvOS";
+		};
+		F7736177216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAC0B3AA1D651CB500D25C44;
+			remoteInfo = "SiestaUI iOS";
+		};
+		F7736179216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAC0B3D61D651CC700D25C44;
+			remoteInfo = "SiestaUI macOS";
+		};
+		F773617B216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA336E591B2E6DDB006F702A;
+			remoteInfo = "SiestaTests iOS";
+		};
+		F773617D216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9F0FAFAC1D033FCD00CE1B61;
+			remoteInfo = "SiestaTests macOS";
+		};
+		F773617F216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDCCAF7A1E6A31DA00860D18;
+			remoteInfo = "SiestaTests tvOS";
+		};
+		F7736181216035BB00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA19D06E1D9ADC1800D15F3A;
+			remoteInfo = "SiestaPerformanceTests macOS";
+		};
+		F7736183216035DF00467622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F2FB51D1C28645E0068DFFA;
+			remoteInfo = "Siesta macOS";
+		};
 		F778217B215E875A00B240C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F778215D215E875900B240C3 /* Project object */;
@@ -33,7 +115,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F77361872160360200467622 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F773618D2160368B00467622 /* Siesta.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F7736162216035BB00467622 /* Siesta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Siesta.xcodeproj; path = "Third-Party/Siesta/Siesta.xcodeproj"; sourceTree = "<group>"; };
+		F773618E2160384700467622 /* LanguageIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageIDService.swift; sourceTree = "<group>"; };
+		F77361902160391E00467622 /* KeysAndTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysAndTokens.swift; sourceTree = "<group>"; };
+		F7736193216064E600467622 /* LanguageID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageID.swift; sourceTree = "<group>"; };
 		F7782165215E875900B240C3 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7782168215E875900B240C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F778216A215E875900B240C3 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -55,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7736186216035FC00467622 /* Siesta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +175,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F7736163216035BB00467622 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7736170216035BB00467622 /* Siesta.framework */,
+				F7736172216035BB00467622 /* Siesta.framework */,
+				F7736174216035BB00467622 /* Siesta.framework */,
+				F7736176216035BB00467622 /* Siesta.framework */,
+				F7736178216035BB00467622 /* SiestaUI.framework */,
+				F773617A216035BB00467622 /* SiestaUI.framework */,
+				F773617C216035BB00467622 /* SiestaTests.xctest */,
+				F773617E216035BB00467622 /* SiestaTests.xctest */,
+				F7736180216035BB00467622 /* SiestaTests tvOS.xctest */,
+				F7736182216035BB00467622 /* SiestaPerformanceTests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7736185216035FC00467622 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7736192216064AE00467622 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7736193216064E600467622 /* LanguageID.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F778215C215E875900B240C3 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +215,8 @@
 				F778217D215E875A00B240C3 /* Tests */,
 				F7782188215E875A00B240C3 /* UI Tests */,
 				F7782166215E875900B240C3 /* Products */,
+				F7736162216035BB00467622 /* Siesta.xcodeproj */,
+				F7736185216035FC00467622 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,12 +259,15 @@
 		F77FA4CB215EB33100F932CB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F7736192216064AE00467622 /* Models */,
 				F7782168215E875900B240C3 /* AppDelegate.swift */,
 				F778216A215E875900B240C3 /* Document.swift */,
 				F778216C215E875900B240C3 /* Document.xib */,
 				F778216F215E875A00B240C3 /* Assets.xcassets */,
 				F7782171215E875A00B240C3 /* MainMenu.xib */,
 				F7782174215E875A00B240C3 /* Info.plist */,
+				F77361902160391E00467622 /* KeysAndTokens.swift */,
+				F773618E2160384700467622 /* LanguageIDService.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -145,10 +282,12 @@
 				F7782161215E875900B240C3 /* Sources */,
 				F7782162215E875900B240C3 /* Frameworks */,
 				F7782163215E875900B240C3 /* Resources */,
+				F77361872160360200467622 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F7736184216035DF00467622 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -203,6 +342,11 @@
 				TargetAttributes = {
 					F7782164215E875900B240C3 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					F7782179215E875A00B240C3 = {
 						CreatedOnToolsVersion = 10.0;
@@ -225,6 +369,12 @@
 			mainGroup = F778215C215E875900B240C3;
 			productRefGroup = F7782166215E875900B240C3 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F7736163216035BB00467622 /* Products */;
+					ProjectRef = F7736162216035BB00467622 /* Siesta.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F7782164215E875900B240C3 /* Runner */,
@@ -233,6 +383,79 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F7736170216035BB00467622 /* Siesta.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Siesta.framework;
+			remoteRef = F773616F216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736172216035BB00467622 /* Siesta.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Siesta.framework;
+			remoteRef = F7736171216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736174216035BB00467622 /* Siesta.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Siesta.framework;
+			remoteRef = F7736173216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736176216035BB00467622 /* Siesta.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Siesta.framework;
+			remoteRef = F7736175216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736178216035BB00467622 /* SiestaUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SiestaUI.framework;
+			remoteRef = F7736177216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F773617A216035BB00467622 /* SiestaUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SiestaUI.framework;
+			remoteRef = F7736179216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F773617C216035BB00467622 /* SiestaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SiestaTests.xctest;
+			remoteRef = F773617B216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F773617E216035BB00467622 /* SiestaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SiestaTests.xctest;
+			remoteRef = F773617D216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736180216035BB00467622 /* SiestaTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SiestaTests tvOS.xctest";
+			remoteRef = F773617F216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7736182216035BB00467622 /* SiestaPerformanceTests macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SiestaPerformanceTests macOS.xctest";
+			remoteRef = F7736181216035BB00467622 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F7782163215E875900B240C3 /* Resources */ = {
@@ -267,6 +490,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F778216B215E875900B240C3 /* Document.swift in Sources */,
+				F773618F2160384700467622 /* LanguageIDService.swift in Sources */,
+				F77361912160391E00467622 /* KeysAndTokens.swift in Sources */,
+				F7736194216064E600467622 /* LanguageID.swift in Sources */,
 				F7782169215E875900B240C3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +516,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F7736184216035DF00467622 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Siesta macOS";
+			targetProxy = F7736183216035DF00467622 /* PBXContainerItemProxy */;
+		};
 		F778217C215E875A00B240C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F7782164215E875900B240C3 /* Runner */;

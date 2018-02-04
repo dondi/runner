@@ -2,8 +2,10 @@ import Cocoa
 
 class Document: NSDocument {
 
+    static let languageIdService = LanguageIdentificationService()
+
     @IBOutlet weak var codeTextView: NSTextView!
-    @IBOutlet weak var languagePopupButton: NSPopUpButton!
+    @IBOutlet weak var languageLabel: NSTextField!
     @IBOutlet weak var outputTextView: NSTextView!
 
     override init() {
@@ -37,6 +39,15 @@ class Document: NSDocument {
     @IBAction func runThis(_ sender: Any) {
         let code = codeTextView.string
 
+        Document.languageIdService.id().request(.post,
+            text: "\"\(encodeCode(code))\"",
+            contentType: "application/json"
+        ).onSuccess { result in
+            if let json: LanguageIDResponse = result.typedContent() {
+                self.languageLabel.stringValue = "Run as: \(json.result[0][0] as? String ?? "unknown")"
+            }
+        }
+
         // Thank you https://iswift.org/cookbook/execute-a-shell-command
         let process = Process()
         process.launchPath = "/usr/bin/python"
@@ -64,5 +75,10 @@ class Document: NSDocument {
         }
 
         outputTextView.string = result
+    }
+
+    private func encodeCode(_ code: String) -> String {
+        return code.replacingOccurrences(of: "\\n", with: "\\\\n", options: .regularExpression)
+                   .replacingOccurrences(of: "\"", with: "\\\\\"", options: .regularExpression)
     }
 }
