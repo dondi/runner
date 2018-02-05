@@ -11,11 +11,11 @@ struct LanguageIDProbability: Codable, Equatable {
 }
 
 struct LanguageIDResponse: Decodable, Equatable {
-    let result: [[Any]]
+    let result: [LanguageIDProbability]
     let metadata: LanguageIDMetadata
 
     static func ==(lhs: LanguageIDResponse, rhs: LanguageIDResponse) -> Bool {
-        return lhs.metadata == rhs.metadata
+        return lhs.result == rhs.result && lhs.metadata == rhs.metadata
     }
 
     enum CodingKeys: String, CodingKey {
@@ -26,13 +26,12 @@ struct LanguageIDResponse: Decodable, Equatable {
     init(from decoder: Decoder) throws {
         let response = try decoder.container(keyedBy: CodingKeys.self)
         var result = try response.nestedUnkeyedContainer(forKey: CodingKeys.result)
-        var decodedResult = [[Any]]()
+        var decodedResult = [LanguageIDProbability]()
         for _ in 0..<result.count! {
-            var probability = try result.nestedUnkeyedContainer()
-            var decodedProbability = [Any]()
-            decodedProbability.append(try probability.decode(String.self))
-            decodedProbability.append(try probability.decode(Double.self))
-            decodedResult.append(decodedProbability)
+            var probabilityContainer = try result.nestedUnkeyedContainer()
+            let language = try probabilityContainer.decode(String.self)
+            let probability = try probabilityContainer.decode(Double.self)
+            decodedResult.append(LanguageIDProbability(language: language, probability: probability))
         }
 
         self.result = decodedResult

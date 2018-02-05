@@ -43,8 +43,8 @@ class Document: NSDocument {
             text: "\"\(encodeCode(code))\"",
             contentType: "application/json"
         ).onSuccess { result in
-            if let json: LanguageIDResponse = result.typedContent() {
-                self.languageLabel.stringValue = "Run as: \(json.result[0][0] as? String ?? "unknown")"
+            if let languageIdResponse: LanguageIDResponse = result.typedContent() {
+                self.languageLabel.stringValue = "Run as: \(languageIdResponse.result[0].language.capitalized)"
             }
         }
 
