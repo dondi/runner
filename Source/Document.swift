@@ -1,16 +1,35 @@
 import Cocoa
 
+enum DocumentStatus {
+    case languageId
+    case running
+    case dormant
+}
+
+struct DocumentState {
+    let status: DocumentStatus
+    let language: String
+}
+
 class Document: NSDocument {
 
     static let languageIdService = LanguageIdentificationService()
 
     @IBOutlet weak var codeTextView: NSTextView!
     @IBOutlet weak var languageLabel: NSTextField!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var outputTextView: NSTextView!
+    @IBOutlet weak var runButton: NSButton!
+
+    var state: DocumentState {
+        didSet {
+            self.stateChanged()
+        }
+    }
 
     override init() {
+        state = DocumentState(status: .dormant, language: "(unknown)")
         super.init()
-        // Add your subclass-specific initialization here.
     }
 
     override class var autosavesInPlace: Bool {
@@ -39,13 +58,17 @@ class Document: NSDocument {
     @IBAction func runThis(_ sender: Any) {
         let code = codeTextView.string
 
+        state = DocumentState(status: .languageId, language: "(unknown)")
         Document.languageIdService.id().request(.post,
-            text: "\"\(encodeCode(code))\"",
+            text: encodeCode(code),
             contentType: "application/json"
         ).onSuccess { result in
             if let languageIdResponse: LanguageIDResponse = result.typedContent() {
-                self.languageLabel.stringValue = "Run as: \(languageIdResponse.result[0].language.capitalized)"
+                self.state = DocumentState(status: .running,
+                    language: languageIdResponse.result[0].language.capitalized)
             }
+        }.onFailure { _ in
+            self.state = DocumentState(status: .dormant, language: "(unable to determine language)")
         }
 
         // Thank you https://iswift.org/cookbook/execute-a-shell-command
@@ -78,7 +101,32 @@ class Document: NSDocument {
     }
 
     private func encodeCode(_ code: String) -> String {
-        return code.replacingOccurrences(of: "\\n", with: "\\\\n", options: .regularExpression)
-                   .replacingOccurrences(of: "\"", with: "\\\\\"", options: .regularExpression)
+        let jsonEncoder = JSONEncoder()
+        do {
+            if let arrayString = String(data: try jsonEncoder.encode([code]), encoding: .utf8) {
+                return arrayString.replacingOccurrences(of: "^\\[|\\]$", with: "", options: .regularExpression)
+            } else {
+                return ""
+            }
+        } catch {
+            return ""
+        }
+    }
+
+    private func stateChanged() {
+        switch state.status {
+            case .dormant:
+                progressIndicator.stopAnimation(self)
+                self.languageLabel.stringValue = state.language
+                runButton.isEnabled = true
+            case .languageId:
+                progressIndicator.startAnimation(self)
+                self.languageLabel.stringValue = "Determining language…"
+                runButton.isEnabled = false
+            case .running:
+                progressIndicator.startAnimation(self)
+                self.languageLabel.stringValue = "Run as: \(state.language)"
+                runButton.isEnabled = false
+        }
     }
 }

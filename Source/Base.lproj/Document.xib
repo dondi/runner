@@ -11,6 +11,8 @@
                 <outlet property="codeTextView" destination="O8e-OW-mdG" id="DEe-hO-aL0"/>
                 <outlet property="languageLabel" destination="1dY-rS-aRD" id="XRS-Wg-FMN"/>
                 <outlet property="outputTextView" destination="EU0-BQ-QWM" id="0ul-1L-gnO"/>
+                <outlet property="progressIndicator" destination="JEb-n1-DHG" id="Spx-wG-d7N"/>
+                <outlet property="runButton" destination="5gQ-uG-elo" id="1zF-Ts-oVd"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -51,39 +53,55 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView misplaced="YES" id="nK4-Ju-IwT">
+                            <customView id="nK4-Ju-IwT">
                                 <rect key="frame" x="0.0" y="153" width="507" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gQ-uG-elo">
-                                        <rect key="frame" x="420" y="11" width="67" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="67" id="iY3-LV-gn5"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="roundTextured" title="Run This" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2rA-gH-rGX">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="runThis:" target="-2" id="XsV-mK-z2j"/>
-                                        </connections>
-                                    </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dY-rS-aRD">
-                                        <rect key="frame" x="18" y="16" width="396" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Language" id="ytW-N6-NpK">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-AV-Znt">
+                                        <rect key="frame" x="20" y="38" width="467" height="32"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dY-rS-aRD">
+                                                <rect key="frame" x="-2" y="7" width="356" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" id="ytW-N6-NpK">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-n1-DHG">
+                                                <rect key="frame" x="360" y="0.0" width="32" height="32"/>
+                                            </progressIndicator>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gQ-uG-elo">
+                                                <rect key="frame" x="400" y="3" width="67" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="67" id="iY3-LV-gn5"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="roundTextured" title="Run This" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2rA-gH-rGX">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="runThis:" target="-2" id="XsV-mK-z2j"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="5gQ-uG-elo" secondAttribute="trailing" constant="20" id="EmA-1v-GcL"/>
-                                    <constraint firstItem="1dY-rS-aRD" firstAttribute="leading" secondItem="nK4-Ju-IwT" secondAttribute="leading" constant="20" id="Mh3-rZ-kKB"/>
-                                    <constraint firstItem="5gQ-uG-elo" firstAttribute="centerY" secondItem="nK4-Ju-IwT" secondAttribute="centerY" id="aVn-fM-Unc"/>
+                                    <constraint firstItem="ujS-AV-Znt" firstAttribute="leading" secondItem="nK4-Ju-IwT" secondAttribute="leading" constant="20" id="KJd-xm-pFP"/>
                                     <constraint firstAttribute="height" constant="48" id="dxb-fU-vJI"/>
-                                    <constraint firstItem="5gQ-uG-elo" firstAttribute="leading" secondItem="1dY-rS-aRD" secondAttribute="trailing" constant="8" id="hBB-cK-93q"/>
-                                    <constraint firstItem="1dY-rS-aRD" firstAttribute="centerY" secondItem="nK4-Ju-IwT" secondAttribute="centerY" id="tFL-nH-m0U"/>
+                                    <constraint firstAttribute="trailing" secondItem="ujS-AV-Znt" secondAttribute="trailing" constant="20" id="fRL-DQ-YUT"/>
+                                    <constraint firstItem="ujS-AV-Znt" firstAttribute="centerY" secondItem="nK4-Ju-IwT" secondAttribute="centerY" id="iFs-8N-oEX"/>
                                 </constraints>
                             </customView>
                             <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="qmd-X3-KjE">
