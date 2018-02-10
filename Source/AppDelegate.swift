@@ -5,6 +5,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSApp.servicesProvider = self
+
+        UserDefaults.standard.register(defaults: [
+            "languageMappings": LANGUAGE_TO_EXECUTABLE
+        ])
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

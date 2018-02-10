@@ -262,12 +262,12 @@
 			isa = PBXGroup;
 			children = (
 				F778216F215E875A00B240C3 /* Assets.xcassets */,
+				F7782171215E875A00B240C3 /* MainMenu.xib */,
 				F7736192216064AE00467622 /* Models */,
 				F7782168215E875900B240C3 /* AppDelegate.swift */,
 				F778216A215E875900B240C3 /* Document.swift */,
 				F778216C215E875900B240C3 /* Document.xib */,
 				F7736195216092D400467622 /* Executor.swift */,
-				F7782171215E875A00B240C3 /* MainMenu.xib */,
 				F7782174215E875A00B240C3 /* Info.plist */,
 				F77361902160391E00467622 /* KeysAndTokens.swift */,
 				F773618E2160384700467622 /* LanguageIDService.swift */,
@@ -347,7 +347,7 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -676,7 +676,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3CWQTF6K7P;
@@ -695,7 +694,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3CWQTF6K7P;

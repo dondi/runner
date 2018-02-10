@@ -58,46 +58,21 @@ class Document: NSDocument {
     @IBAction func runThis(_ sender: Any) {
         let code = codeTextView.string
 
-        state = DocumentState(status: .languageId, language: "(unknown)")
-        Document.languageIdService.id().request(.post,
-            text: encodeCode(code),
-            contentType: "application/json"
-        ).onSuccess { result in
-            if let languageIdResponse: LanguageIDResponse = result.typedContent() {
-                self.state = DocumentState(status: .running,
-                    language: languageIdResponse.result[0].language.capitalized)
+        if state.language == "(unknown)" {
+            state = DocumentState(status: .languageId, language: "(unknown)")
+            Document.languageIdService.id().request(.post,
+                text: encodeCode(code),
+                contentType: "application/json"
+            ).onSuccess { result in
+                if let languageIdResponse: LanguageIDResponse = result.typedContent() {
+                    self.executeCode(code, language: languageIdResponse.result[0].language)
+                }
+            }.onFailure { _ in
+                self.state = DocumentState(status: .dormant, language: "(unable to determine language)")
             }
-        }.onFailure { _ in
-            self.state = DocumentState(status: .dormant, language: "(unable to determine language)")
+        } else {
+            executeCode(code, language: state.language)
         }
-
-        // Thank you https://iswift.org/cookbook/execute-a-shell-command
-        let process = Process()
-        process.launchPath = "/usr/bin/python"
-        process.arguments = ["-c", code]
-
-        let pipe = Pipe()
-        process.standardOutput = pipe
-
-        let errorPipe = Pipe()
-        process.standardError = errorPipe
-
-        process.launch()
-
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let errorData = errorPipe.fileHandleForReading.readDataToEndOfFile()
-
-        var result = "(executed, but no output)"
-        if let output = String(data: data, encoding: String.Encoding.utf8) {
-            result = output
-        }
-
-        if let errorOutput = String(data: errorData, encoding: String.Encoding.utf8),
-           errorOutput.count > 0 {
-            result = "\(result)\n\nErrors reported:\n\(errorOutput)"
-        }
-
-        outputTextView.string = result
     }
 
     private func encodeCode(_ code: String) -> String {
@@ -113,11 +88,28 @@ class Document: NSDocument {
         }
     }
 
+    private func executeCode(_ code: String, language: String) {
+        state = DocumentState(status: .running, language: language)
+
+        guard let executable = UserDefaults.standard.dictionary(forKey: "languageMappings")?[language] as? String else {
+            state = DocumentState(status: .dormant, language: "(unable to run \(state.language.capitalized)")
+            return
+        }
+
+        let result = Executor(executable: executable).execute(code: code)
+        outputTextView.string = """
+            \(result.output.count > 0 ? result.output : "(executed, but no output)")
+            \(result.error.count > 0 ? "\n\nErrors reported:\n\(result.error)" : "")
+            """
+
+        state = DocumentState(status: .dormant, language: state.language)
+    }
+
     private func stateChanged() {
         switch state.status {
             case .dormant:
                 progressIndicator.stopAnimation(self)
-                self.languageLabel.stringValue = state.language
+                self.languageLabel.stringValue = state.language.capitalized
                 runButton.isEnabled = true
             case .languageId:
                 progressIndicator.startAnimation(self)
@@ -125,7 +117,7 @@ class Document: NSDocument {
                 runButton.isEnabled = false
             case .running:
                 progressIndicator.startAnimation(self)
-                self.languageLabel.stringValue = "Run as: \(state.language)"
+                self.languageLabel.stringValue = "Run as: \(state.language.capitalized)"
                 runButton.isEnabled = false
         }
     }
