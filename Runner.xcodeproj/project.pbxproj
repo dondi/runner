@@ -13,6 +13,7 @@
 		F77361912160391E00467622 /* KeysAndTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77361902160391E00467622 /* KeysAndTokens.swift */; };
 		F7736194216064E600467622 /* LanguageID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7736193216064E600467622 /* LanguageID.swift */; };
 		F7736196216092D400467622 /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7736195216092D400467622 /* Executor.swift */; };
+		F77361982160C95B00467622 /* LanguageMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77361972160C95B00467622 /* LanguageMappings.swift */; };
 		F7782169215E875900B240C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7782168215E875900B240C3 /* AppDelegate.swift */; };
 		F778216B215E875900B240C3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = F778216A215E875900B240C3 /* Document.swift */; };
 		F778216E215E875900B240C3 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = F778216C215E875900B240C3 /* Document.xib */; };
@@ -135,6 +136,7 @@
 		F77361902160391E00467622 /* KeysAndTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysAndTokens.swift; sourceTree = "<group>"; };
 		F7736193216064E600467622 /* LanguageID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageID.swift; sourceTree = "<group>"; };
 		F7736195216092D400467622 /* Executor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
+		F77361972160C95B00467622 /* LanguageMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMappings.swift; sourceTree = "<group>"; };
 		F7782165215E875900B240C3 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7782168215E875900B240C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F778216A215E875900B240C3 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				F7782174215E875A00B240C3 /* Info.plist */,
 				F77361902160391E00467622 /* KeysAndTokens.swift */,
 				F773618E2160384700467622 /* LanguageIDService.swift */,
+				F77361972160C95B00467622 /* LanguageMappings.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				F778216B215E875900B240C3 /* Document.swift in Sources */,
 				F773618F2160384700467622 /* LanguageIDService.swift in Sources */,
 				F77361912160391E00467622 /* KeysAndTokens.swift in Sources */,
+				F77361982160C95B00467622 /* LanguageMappings.swift in Sources */,
 				F7736194216064E600467622 /* LanguageID.swift in Sources */,
 				F7736196216092D400467622 /* Executor.swift in Sources */,
 				F7782169215E875900B240C3 /* AppDelegate.swift in Sources */,

@@ -1,14 +1,5 @@
 import Foundation
 
-let LANGUAGE_TO_EXECUTABLE: [String:String] = [
-    "java": "/usr/bin/java", // Not really applicable due to compilation but just in case.
-    "javascript": "/usr/local/node/bin/node",
-    "perl": "/usr/bin/perl",
-    "python": "/usr/bin/python",
-    "ruby": "/usr/bin/irb",
-    "swift": "/usr/bin/swift"
-]
-
 struct ExecutionResult {
     let output: String
     let error: String

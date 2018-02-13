@@ -90,9 +90,10 @@ class Document: NSDocument {
 
     private func executeCode(_ code: String, language: String) {
         state = DocumentState(status: .running, language: language)
+        let languageDisplayName = LANGUAGE_TO_DISPLAY[state.language] ?? "(unknown)"
 
         guard let executable = UserDefaults.standard.dictionary(forKey: "languageMappings")?[language] as? String else {
-            state = DocumentState(status: .dormant, language: "(unable to run \(state.language.capitalized)")
+            state = DocumentState(status: .dormant, language: "(unable to run \(languageDisplayName)")
             return
         }
 
@@ -106,10 +107,11 @@ class Document: NSDocument {
     }
 
     private func stateChanged() {
+        let languageDisplayName = LANGUAGE_TO_DISPLAY[state.language] ?? "(unknown)"
         switch state.status {
             case .dormant:
                 progressIndicator.stopAnimation(self)
-                self.languageLabel.stringValue = state.language.capitalized
+                self.languageLabel.stringValue = languageDisplayName
                 runButton.isEnabled = true
             case .languageId:
                 progressIndicator.startAnimation(self)
@@ -117,7 +119,7 @@ class Document: NSDocument {
                 runButton.isEnabled = false
             case .running:
                 progressIndicator.startAnimation(self)
-                self.languageLabel.stringValue = "Run as: \(state.language.capitalized)"
+                self.languageLabel.stringValue = "Run as: \(languageDisplayName)"
                 runButton.isEnabled = false
         }
     }
