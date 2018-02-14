@@ -7,7 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.servicesProvider = self
 
         UserDefaults.standard.register(defaults: [
-            "languageMappings": LANGUAGE_TO_EXECUTABLE
+            LANGUAGE_TO_EXECUTABLE_KEY: LANGUAGE_TO_EXECUTABLE
         ])
     }
 

@@ -92,7 +92,8 @@ class Document: NSDocument {
         state = DocumentState(status: .running, language: language)
         let languageDisplayName = LANGUAGE_TO_DISPLAY[state.language] ?? "(unknown)"
 
-        guard let executable = UserDefaults.standard.dictionary(forKey: "languageMappings")?[language] as? String else {
+        guard let languageMappings = UserDefaults.standard.dictionary(forKey: LANGUAGE_TO_EXECUTABLE_KEY),
+              let executable = languageMappings[language] as? String else {
             state = DocumentState(status: .dormant, language: "(unable to run \(languageDisplayName)")
             return
         }
