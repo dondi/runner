@@ -4,7 +4,7 @@ let LANGUAGE_TO_EXECUTABLE_KEY = "languageToExecutable"
 
 let LANGUAGE_TO_EXECUTABLE: [String:String] = [
     "java": "/usr/bin/java", // Not really applicable due to compilation but just in case.
-    "javascript": "/usr/local/node/bin/node",
+    "javascript": "/usr/local/bin/node",
     "perl": "/usr/bin/perl",
     "python": "/usr/bin/python",
     "ruby": "/usr/bin/irb",
