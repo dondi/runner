@@ -58,21 +58,26 @@ class Document: NSDocument {
     @IBAction func runThis(_ sender: Any) {
         let code = codeTextView.string
 
-        if state.language == "(unknown)" {
-            state = DocumentState(status: .languageId, language: "(unknown)")
-            Document.languageIdService.id().request(.post,
-                text: encodeCode(code),
-                contentType: "application/json"
-            ).onSuccess { result in
-                if let languageIdResponse: LanguageIDResponse = result.typedContent() {
-                    self.executeCode(code, language: languageIdResponse.result[0].language)
-                }
-            }.onFailure { _ in
-                self.state = DocumentState(status: .dormant, language: "(unable to determine language)")
+        state = DocumentState(status: .languageId, language: "(unknown)")
+        Document.languageIdService.id().request(.post,
+            text: encodeCode(code),
+            contentType: "application/json"
+        ).onSuccess { result in
+            if let languageIdResponse: LanguageIDResponse = result.typedContent() {
+                self.executeCode(code, language: languageIdResponse.result[0].language)
             }
-        } else {
-            executeCode(code, language: state.language)
+        }.onFailure { _ in
+            self.state = DocumentState(status: .dormant, language: "(unable to determine language)")
         }
+    }
+
+    // TODO Is it possible to make these language-specific actions dynamic, based on the available language mappings?
+    @IBAction func runJavaScript(_ sender: Any) {
+        executeCode(codeTextView.string, language: "javascript")
+    }
+
+    @IBAction func runPython(_ sender: Any) {
+        executeCode(codeTextView.string, language: "python")
     }
 
     private func encodeCode(_ code: String) -> String {
