@@ -1,4 +1,5 @@
 import Cocoa
+import WebKit
 
 enum DocumentStatus {
     case languageId
@@ -11,7 +12,7 @@ struct DocumentState {
     let language: String
 }
 
-class Document: NSDocument {
+class Document: NSDocument, WKNavigationDelegate {
 
     static let languageIdService = LanguageIdentificationService()
 
@@ -20,6 +21,7 @@ class Document: NSDocument {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var outputTextView: NSTextView!
     @IBOutlet weak var runButton: NSButton!
+    @IBOutlet weak var webView: WKWebView!
 
     var state: DocumentState {
         didSet {
@@ -73,7 +75,27 @@ class Document: NSDocument {
 
     // TODO Is it possible to make these language-specific actions dynamic, based on the available language mappings?
     @IBAction func runJavaScript(_ sender: Any) {
-        executeCode(codeTextView.string, language: "javascript")
+        // TODO Experimental: use a web view to execute JavaScript.
+        //executeCode(codeTextView.string, language: "javascript")
+        webView.navigationDelegate = self
+        webView.loadHTMLString("<!DOCTYPE html><html><head></head><body></body></html>", baseURL: nil)
+    }
+
+    func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
+        webView.evaluateJavaScript(codeTextView.string) { possibleResult, possibleError in
+            var output = "(executed but no output)"
+            var errorOutput = ""
+
+            if let result = possibleResult {
+                output = "\(result)"
+            }
+
+            if let error = possibleError {
+                errorOutput = "\n\nErrors reported:\n\(error)"
+            }
+
+            self.outputTextView.string = "\(output)\(errorOutput)"
+        }
     }
 
     @IBAction func runPython(_ sender: Any) {

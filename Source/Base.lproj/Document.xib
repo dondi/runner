@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +14,7 @@
                 <outlet property="outputTextView" destination="EU0-BQ-QWM" id="0ul-1L-gnO"/>
                 <outlet property="progressIndicator" destination="JEb-n1-DHG" id="Spx-wG-d7N"/>
                 <outlet property="runButton" destination="5gQ-uG-elo" id="1zF-Ts-oVd"/>
+                <outlet property="webView" destination="l5P-ph-FcK" id="nNi-c2-Afa"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
@@ -54,14 +56,14 @@
                                 </scroller>
                             </scrollView>
                             <customView id="nK4-Ju-IwT">
-                                <rect key="frame" x="0.0" y="153" width="507" height="107"/>
+                                <rect key="frame" x="0.0" y="153" width="507" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujS-AV-Znt">
-                                        <rect key="frame" x="20" y="38" width="467" height="32"/>
+                                        <rect key="frame" x="20" y="37" width="467" height="32"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dY-rS-aRD">
-                                                <rect key="frame" x="-2" y="7" width="356" height="17"/>
+                                                <rect key="frame" x="-2" y="8" width="356" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" id="ytW-N6-NpK">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -105,7 +107,7 @@
                                 </constraints>
                             </customView>
                             <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="qmd-X3-KjE">
-                                <rect key="frame" x="0.0" y="261" width="507" height="152"/>
+                                <rect key="frame" x="0.0" y="260" width="507" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Y7S-QR-fOO">
                                     <rect key="frame" x="0.0" y="0.0" width="507" height="152"/>
@@ -126,10 +128,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <wkWebView wantsLayer="YES" id="l5P-ph-FcK">
+                                <rect key="frame" x="0.0" y="413" width="507" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="w3m-Qj-2p7"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <holdingPriorities>
                             <real value="250"/>
                             <real value="1"/>
+                            <real value="250"/>
                             <real value="250"/>
                         </holdingPriorities>
                     </splitView>
