@@ -29,6 +29,9 @@ class Document: NSDocument, WKNavigationDelegate {
         }
     }
 
+    // Temporary holder to keep the executor from going out of scope.
+    var webKitExecutor: WebKitExecutor?
+
     override init() {
         state = DocumentState(status: .dormant, language: "(unknown)")
         super.init()
@@ -75,27 +78,7 @@ class Document: NSDocument, WKNavigationDelegate {
 
     // TODO Is it possible to make these language-specific actions dynamic, based on the available language mappings?
     @IBAction func runJavaScript(_ sender: Any) {
-        // TODO Experimental: use a web view to execute JavaScript.
-        //executeCode(codeTextView.string, language: "javascript")
-        webView.navigationDelegate = self
-        webView.loadHTMLString("<!DOCTYPE html><html><head></head><body></body></html>", baseURL: nil)
-    }
-
-    func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
-        webView.evaluateJavaScript(codeTextView.string) { possibleResult, possibleError in
-            var output = "(executed but no output)"
-            var errorOutput = ""
-
-            if let result = possibleResult {
-                output = "\(result)"
-            }
-
-            if let error = possibleError {
-                errorOutput = "\n\nErrors reported:\n\(error)"
-            }
-
-            self.outputTextView.string = "\(output)\(errorOutput)"
-        }
+        executeCode(codeTextView.string, language: "javascript")
     }
 
     @IBAction func runPython(_ sender: Any) {
@@ -118,7 +101,14 @@ class Document: NSDocument, WKNavigationDelegate {
     private func executeCode(_ code: String, language: String) {
         state = DocumentState(status: .running, language: language)
         let languageDisplayName = LANGUAGE_TO_DISPLAY[state.language] ?? "(unknown)"
+        if language == "javascript" {
+            executeWebKitCode(code, language: language, displaying: languageDisplayName)
+        } else {
+            executeStdIoCode(code, language: language, displaying: languageDisplayName)
+        }
+    }
 
+    private func executeStdIoCode(_ code: String, language: String, displaying languageDisplayName: String) {
         guard let languageMappings = UserDefaults.standard.dictionary(forKey: LANGUAGE_TO_EXECUTABLE_KEY),
               let executable = languageMappings[language] as? String else {
             state = DocumentState(status: .dormant, language: "(unable to run \(languageDisplayName)")
@@ -132,6 +122,23 @@ class Document: NSDocument, WKNavigationDelegate {
             """
 
         state = DocumentState(status: .dormant, language: state.language)
+    }
+
+    private func executeWebKitCode(_ code: String, language: String, displaying languageDisplayName: String) {
+        webKitExecutor = WebKitExecutor(webView: webView)
+        webKitExecutor!.execute(code: code) { result in
+            self.outputTextView.string = """
+                \(result.output.count > 0 ? result.output : "(executed, but no output)")
+                \(result.error.count > 0 ? "\n\nErrors reported:\n\(result.error)" : "")
+                """
+
+            self.state = DocumentState(status: .dormant, language: self.state.language)
+
+            // Get rid of the web kit executor when we are done.
+            self.webView.navigationDelegate = nil
+            self.webView.uiDelegate = nil
+            self.webKitExecutor = nil
+        }
     }
 
     private func stateChanged() {

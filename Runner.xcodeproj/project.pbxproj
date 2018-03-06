@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F76130262161B19400B0F831 /* WebKitExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76130252161B19400B0F831 /* WebKitExecutor.swift */; };
 		F7736186216035FC00467622 /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7736172216035BB00467622 /* Siesta.framework */; };
 		F773618D2160368B00467622 /* Siesta.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F7736172216035BB00467622 /* Siesta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F773618F2160384700467622 /* LanguageIDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F773618E2160384700467622 /* LanguageIDService.swift */; };
@@ -131,6 +132,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F76130252161B19400B0F831 /* WebKitExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitExecutor.swift; sourceTree = "<group>"; };
 		F7736162216035BB00467622 /* Siesta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Siesta.xcodeproj; path = "Third-Party/Siesta/Siesta.xcodeproj"; sourceTree = "<group>"; };
 		F773618E2160384700467622 /* LanguageIDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageIDService.swift; sourceTree = "<group>"; };
 		F77361902160391E00467622 /* KeysAndTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysAndTokens.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				F778216A215E875900B240C3 /* Document.swift */,
 				F778216C215E875900B240C3 /* Document.xib */,
 				F7736195216092D400467622 /* Executor.swift */,
+				F76130252161B19400B0F831 /* WebKitExecutor.swift */,
 				F7782174215E875A00B240C3 /* Info.plist */,
 				F77361902160391E00467622 /* KeysAndTokens.swift */,
 				F773618E2160384700467622 /* LanguageIDService.swift */,
@@ -499,6 +502,7 @@
 				F773618F2160384700467622 /* LanguageIDService.swift in Sources */,
 				F77361912160391E00467622 /* KeysAndTokens.swift in Sources */,
 				F77361982160C95B00467622 /* LanguageMappings.swift in Sources */,
+				F76130262161B19400B0F831 /* WebKitExecutor.swift in Sources */,
 				F7736194216064E600467622 /* LanguageID.swift in Sources */,
 				F7736196216092D400467622 /* Executor.swift in Sources */,
 				F7782169215E875900B240C3 /* AppDelegate.swift in Sources */,
