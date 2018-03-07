@@ -81,8 +81,20 @@ class Document: NSDocument, WKNavigationDelegate {
         executeCode(codeTextView.string, language: "javascript")
     }
 
+    @IBAction func runPerl(_ sender: Any) {
+        executeCode(codeTextView.string, language: "perl")
+    }
+
     @IBAction func runPython(_ sender: Any) {
         executeCode(codeTextView.string, language: "python")
+    }
+
+    @IBAction func runRuby(_ sender: Any) {
+        executeCode(codeTextView.string, language: "ruby")
+    }
+
+    @IBAction func runSwift(_ sender: Any) {
+        executeCode(codeTextView.string, language: "swift")
     }
 
     private func encodeCode(_ code: String) -> String {
