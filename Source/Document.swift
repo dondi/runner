@@ -110,7 +110,7 @@ class Document: NSDocument, WKNavigationDelegate {
         }
     }
 
-    private func executeCode(_ code: String, language: String) {
+    func executeCode(_ code: String, language: String) {
         state = DocumentState(status: .running, language: language)
         let languageDisplayName = LANGUAGE_TO_DISPLAY[state.language] ?? "(unknown)"
         if language == "javascript" {

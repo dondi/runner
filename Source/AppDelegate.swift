@@ -16,10 +16,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func run(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
-        if let str = pboard.string(forType: NSPasteboard.PasteboardType.string) {
-            if let newNSDocument = try? NSDocumentController.shared.openUntitledDocumentAndDisplay(true),
-               let newDocument = newNSDocument as? Document {
-                newDocument.codeTextView.string = str
+        run(codeInPasteboard: pboard)
+    }
+
+    // TODO Unsure if these can be added dynamically.
+    @objc func runAsJavaScript(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
+        run(codeInPasteboard: pboard, language: "javascript")
+    }
+
+    @objc func runAsPython(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
+        run(codeInPasteboard: pboard, language: "python")
+    }
+
+    private func run(codeInPasteboard: NSPasteboard, language: String? = nil) {
+        if let str = codeInPasteboard.string(forType: NSPasteboard.PasteboardType.string),
+           let newNSDocument = try? NSDocumentController.shared.openUntitledDocumentAndDisplay(true),
+           let newDocument = newNSDocument as? Document {
+            newDocument.codeTextView.string = str
+            if let specificLanguage = language {
+                newDocument.executeCode(str, language: specificLanguage)
+            } else {
                 newDocument.runThis(self)
             }
         }
