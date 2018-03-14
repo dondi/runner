@@ -19,15 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         run(codeInPasteboard: pboard)
     }
 
-    // TODO Unsure if these can be added dynamically.
-    @objc func runAsJavaScript(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
-        run(codeInPasteboard: pboard, language: "javascript")
-    }
-
-    @objc func runAsPython(_ pboard: NSPasteboard, userData: String, error: NSErrorPointer) {
-        run(codeInPasteboard: pboard, language: "python")
-    }
-
     private func run(codeInPasteboard: NSPasteboard, language: String? = nil) {
         if let str = codeInPasteboard.string(forType: NSPasteboard.PasteboardType.string),
            let newNSDocument = try? NSDocumentController.shared.openUntitledDocumentAndDisplay(true),
