@@ -126,30 +126,28 @@ class Document: NSDocument, WKNavigationDelegate {
             return
         }
 
-        let result = Executor(executable: executable).execute(code: code)
-        outputTextView.string = """
-            \(result.output.count > 0 ? result.output : "(executed, but no output)")
-            \(result.error.count > 0 ? "\n\nErrors reported:\n\(result.error)" : "")
-            """
-
-        state = DocumentState(status: .dormant, language: state.language)
+        displayExecutionResult(Executor(executable: executable).execute(code: code))
     }
 
     private func executeWebKitCode(_ code: String, language: String, displaying languageDisplayName: String) {
         webKitExecutor = WebKitExecutor(webView: webView)
         webKitExecutor!.execute(code: code) { result in
-            self.outputTextView.string = """
-                \(result.output.count > 0 ? result.output : "(executed, but no output)")
-                \(result.error.count > 0 ? "\n\nErrors reported:\n\(result.error)" : "")
-                """
-
-            self.state = DocumentState(status: .dormant, language: self.state.language)
+            self.displayExecutionResult(result)
 
             // Get rid of the web kit executor when we are done.
             self.webView.navigationDelegate = nil
             self.webView.uiDelegate = nil
             self.webKitExecutor = nil
         }
+    }
+
+    private func displayExecutionResult(_ result: ExecutionResult) {
+        outputTextView.string = """
+            \(result.output.count > 0 ? result.output : "(executed, but no output)")
+            \(result.error.count > 0 ? "\n\nErrors reported:\n\(result.error)" : "")
+            """
+
+        state = DocumentState(status: .dormant, language: state.language)
     }
 
     private func stateChanged() {
