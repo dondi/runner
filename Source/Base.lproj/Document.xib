@@ -13,7 +13,6 @@
                 <outlet property="languageLabel" destination="1dY-rS-aRD" id="XRS-Wg-FMN"/>
                 <outlet property="outputTextView" destination="EU0-BQ-QWM" id="0ul-1L-gnO"/>
                 <outlet property="progressIndicator" destination="JEb-n1-DHG" id="Spx-wG-d7N"/>
-                <outlet property="runButton" destination="5gQ-uG-elo" id="1zF-Ts-oVd"/>
                 <outlet property="webView" destination="l5P-ph-FcK" id="nNi-c2-Afa"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
@@ -24,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="133" y="480" width="507" height="413"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1778"/>
             <value key="minSize" type="size" width="94" height="86"/>
             <view key="contentView" wantsLayer="YES" id="gIp-Ho-8D9">
                 <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
@@ -63,7 +62,7 @@
                                         <rect key="frame" x="20" y="37" width="467" height="32"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dY-rS-aRD">
-                                                <rect key="frame" x="-2" y="8" width="356" height="17"/>
+                                                <rect key="frame" x="-2" y="8" width="431" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" id="ytW-N6-NpK">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,29 +70,14 @@
                                                 </textFieldCell>
                                             </textField>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-n1-DHG">
-                                                <rect key="frame" x="360" y="0.0" width="32" height="32"/>
+                                                <rect key="frame" x="435" y="0.0" width="32" height="32"/>
                                             </progressIndicator>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gQ-uG-elo">
-                                                <rect key="frame" x="400" y="3" width="67" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="67" id="iY3-LV-gn5"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="roundTextured" title="Run This" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2rA-gH-rGX">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="runThis:" target="-2" id="XsV-mK-z2j"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>

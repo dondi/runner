@@ -20,7 +20,6 @@ class Document: NSDocument, WKNavigationDelegate {
     @IBOutlet weak var languageLabel: NSTextField!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var outputTextView: NSTextView!
-    @IBOutlet weak var runButton: NSButton!
     @IBOutlet weak var webView: WKWebView!
 
     var state: DocumentState {
@@ -159,15 +158,12 @@ class Document: NSDocument, WKNavigationDelegate {
             case .dormant:
                 progressIndicator.stopAnimation(self)
                 self.languageLabel.stringValue = languageDisplayName
-                runButton.isEnabled = true
             case .languageId:
                 progressIndicator.startAnimation(self)
                 self.languageLabel.stringValue = "Determining language…"
-                runButton.isEnabled = false
             case .running:
                 progressIndicator.startAnimation(self)
                 self.languageLabel.stringValue = "Run as: \(languageDisplayName)"
-                runButton.isEnabled = false
         }
     }
 }
