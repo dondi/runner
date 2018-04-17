@@ -1,10 +1,5 @@
 import Foundation
 
-struct ExecutionResult {
-    let output: String
-    let error: String
-}
-
 class Executor {
 
     let executable: String
