@@ -1,6 +1,6 @@
 import Foundation
 
-class Executor {
+class StdioExecutor {
 
     let executable: String
 

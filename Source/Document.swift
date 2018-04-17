@@ -115,18 +115,18 @@ class Document: NSDocument, WKNavigationDelegate {
         if language == "javascript" {
             executeWebKitCode(code, language: language, displaying: languageDisplayName)
         } else {
-            executeStdIoCode(code, language: language, displaying: languageDisplayName)
+            executeStdioCode(code, language: language, displaying: languageDisplayName)
         }
     }
 
-    private func executeStdIoCode(_ code: String, language: String, displaying languageDisplayName: String) {
+    private func executeStdioCode(_ code: String, language: String, displaying languageDisplayName: String) {
         guard let languageMappings = UserDefaults.standard.dictionary(forKey: LANGUAGE_TO_EXECUTABLE_KEY),
               let executable = languageMappings[language] as? String else {
             state = DocumentState(status: .dormant, language: "(unable to run \(languageDisplayName)")
             return
         }
 
-        displayExecutionResult(Executor(executable: executable).execute(code: code))
+        displayExecutionResult(StdioExecutor(executable: executable).execute(code: code))
     }
 
     private func executeWebKitCode(_ code: String, language: String, displaying languageDisplayName: String) {
