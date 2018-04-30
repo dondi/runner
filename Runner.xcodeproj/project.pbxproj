@@ -267,6 +267,8 @@
 		F77FA4CB215EB33100F932CB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F7782174215E875A00B240C3 /* Info.plist */,
+				F77361902160391E00467622 /* KeysAndTokens.swift */,
 				F778216F215E875A00B240C3 /* Assets.xcassets */,
 				F7782171215E875A00B240C3 /* MainMenu.xib */,
 				F7736192216064AE00467622 /* Models */,
@@ -276,8 +278,6 @@
 				F7C4A02C2161EFA500B6D012 /* ExecutionResult.swift */,
 				F7736195216092D400467622 /* StdioExecutor.swift */,
 				F76130252161B19400B0F831 /* WebKitExecutor.swift */,
-				F7782174215E875A00B240C3 /* Info.plist */,
-				F77361902160391E00467622 /* KeysAndTokens.swift */,
 				F773618E2160384700467622 /* LanguageIDService.swift */,
 				F77361972160C95B00467622 /* LanguageMappings.swift */,
 			);
