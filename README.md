@@ -26,5 +26,5 @@ At this writing, Runner can execute code in these languages. Note that, with the
 * JavaScript
 * Perl
 * Python
-* Rubby
+* Ruby
 * Swift
