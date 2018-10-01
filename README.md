@@ -10,7 +10,7 @@ Due to these characteristics, you’ll need to take the following steps to get g
 3. Edit the _Source/KeysAndTokens.swift_ file so that it has this API key
 4. Refresh the Siesta submodule with the command:
 
-    git submodule update --init
+        git submodule update --init
 
 Once these steps have been taken, the project should be buildable/runnable through Xcode in the usual way. Upon building, you will then want to place the application in the _Applications_ folder so that its _Run This_ service becomes available in the _Services_ menu.
 
